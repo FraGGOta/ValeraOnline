@@ -1,5 +1,9 @@
 <h3 align='center'>Valera Online</h3>
 <form class='form-menu'>
-<button class='form-menu-button'>Играть</button>
-<button class='form-menu-button'>Профиль</button>
+  <div align="center">
+    <%= link_to :action => 'on_click_button_play' do %>
+      <button class='form-menu-button'>Play</button>
+    <% end %>
+  </div>
+  <button class='form-menu-button'>Профиль</button>
 </form>
