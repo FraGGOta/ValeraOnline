@@ -1,18 +1,18 @@
 class GameController < ApplicationController
   def index
-    @sessionId = 5
-  end
-
-  def show
-  end
-
-  def on_click_button_go_job
-  end
-
-  def on_click_button_exit
-    redirect_to 'localhost:3000/menu'
+    @health = 50
+    @tired = 50
+    @mana = 50
+    @funny = 50
+    @money = 50
   end
 
   def create
+    render plain: params[:stats].inspect
+  end
+
+  def on_click_button_exit; end
+  def someButton
+      puts "govnoooooooooooooo"
   end
 end
