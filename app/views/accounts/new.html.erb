@@ -1,0 +1,35 @@
+<h3 align='center'>Sign In</h3>
+<%= form_with scope: :account, url: accounts_path, local: true do |f| %>
+  <form class='form-menu'>
+    <div align="center">
+      <table>
+      <tbody>
+        <tr>
+          <td style="border: 0">
+            <p>Nickname: </p>
+          </td>
+          <td style="border: 0">
+            <%= f.text_field :nick, value: "" %>
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 0">
+            <p>Password: </p>
+          </td>
+          <td style="border: 0">
+            <%= f.text_field :passwd, value: "" %>
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 0" colspan="2">
+            <div align="center">
+              <%= link_to :action => 'on_click_button_submit' do %>
+                <%= f.submit :submit, value: "Submit" %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </div>
+  </form>
+<% end %>
