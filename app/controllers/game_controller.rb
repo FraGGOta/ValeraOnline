@@ -1,18 +1,32 @@
 class GameController < ApplicationController
   def index
-    @health = 50
-    @tired = 50
-    @mana = 50
-    @funny = 50
-    @money = 50
+    @account = Account.find_by_id(session[:user_id])
+    @account.health = 50
+    @account.tired = 50
+    @account.mana = 50
+    @account.funny = 50
+    @account.money = 50
   end
 
-  def create
-    render plain: params[:stats].inspect
+  def update
+
   end
 
   def on_click_button_exit; end
-  def someButton
-      puts "govnoooooooooooooo"
-  end
+
+#  private
+#    def user_params
+#      params.require(@account).permit(:health, :tired, :funny, :funny, :money)
+#    end
+#private
+#  def find_stock
+#    puts "govno"
+#    @account = Account.find_by_id(session[:user_id])
+#    if @account.update_attributes(user_params)
+#      # Обрабатывает успешное обновление
+#2#2    else
+#      render 'edit'
+#    end
+#  end
+#  helper_method :find_stock
 end

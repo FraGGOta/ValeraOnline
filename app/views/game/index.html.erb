@@ -2,33 +2,33 @@
 
 <form class='form-game-stats'>
   <h4>Параметры Валеры</h4>
-  Здоровье
+  Health
   <%= form_for :stats do |form| %>
-  <%= form.label :health_value, value=@health %>
-  <progress id='health_progress' class='form-game-progress-stats' max="100" value=<%= @health %>></progress>
-  <br>Усталость
-  <%= form.label :tired_value, value=@tired %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @tired %>"></progress>
-  <br>Мана
-  <%= form.label :mana_value, value=@mana %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @mana %>"></progress>
-  <br>Счастье
-  <%= form.label :funny_value, value=@funny %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @funny %>"></progress>
-  <br>Деньги
-  <%= form.label :money_value, value=@money %>
+  <%= form.label :health_value, value=@account.health %>
+  <progress id='health_progress' class='form-game-progress-stats' max="100" value=<%= @account.health %>></progress>
+  Tired
+  <%= form.label :tired_value, value=@account.tired %>
+  <progress class='form-game-progress-stats' max="100" value="<%= @account.tired %>"></progress>
+  Mana
+  <%= form.label :mana_value, value=@account.mana %>
+  <progress class='form-game-progress-stats' max="100" value="<%= @account.mana %>"></progress>
+  Funny
+  <%= form.label :funny_value, value=@account.funny %>
+  <progress class='form-game-progress-stats' max="100" value="<%= @account.funny %>"></progress>
+  Money
+  <%= form.label :money_value, value=@account.money %>
   <% end %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @money %>"></progress>
+  <progress class='form-game-progress-stats' max="100" value="<%= @account.money %>"></progress>
 </form>
-
 <form class='form-game-buttons-action'>
-  <h4>Действия</h4>
+  Actions
   <%= form_with method: :get do |form| %>
-  <%= form.button :method=> "someButton"%>
-  <%= form.button "Go chill"%>
-  <%= form.button "Go sleep"%>
-  <%= form.button "Go drink"%>
-  <%= form.button "Go walk"%>
+  <%= radio_button_tag 'theme', 'Go job', true %> Plain
+  <br><%= radio_button_tag 'theme', 'Go sleep' %> Desert
+  <br><%= radio_button_tag 'theme', 'Go bar' %> Green
+  <br><%= radio_button_tag 'theme', 'Go work' %> Corporate
+  <br><%= radio_button_tag 'theme', 'Go chill' %> Funky
+  <%= form.submit :submit, value: "Submit" %>
   <% end %>
 </form>
 <%= link_to :action => 'on_click_button_exit' do %>
