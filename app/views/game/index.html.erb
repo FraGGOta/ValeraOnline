@@ -3,7 +3,7 @@
 <form class='form-game-stats'>
   <h4>Параметры Валеры</h4>
   Health
-  <%= form_for :stats do |form| %>
+  <%= form_with do |form| %>
   <%= form.label :health_value, value=@account.health %>
   <progress id='health_progress' class='form-game-progress-stats' max="100" value=<%= @account.health %>></progress>
   Tired
@@ -22,13 +22,13 @@
 </form>
 <form class='form-game-buttons-action'>
   Actions
-  <%= form_with method: :get do |form| %>
+  <%= form_for @account do |form| %>
   <%= radio_button_tag 'theme', 'Go job', true %> Plain
   <br><%= radio_button_tag 'theme', 'Go sleep' %> Desert
   <br><%= radio_button_tag 'theme', 'Go bar' %> Green
   <br><%= radio_button_tag 'theme', 'Go work' %> Corporate
   <br><%= radio_button_tag 'theme', 'Go chill' %> Funky
-  <%= form.submit :submit, value: "Submit" %>
+  <%= form.submit value: "Submit" %>
   <% end %>
 </form>
 <%= link_to :action => 'on_click_button_exit' do %>

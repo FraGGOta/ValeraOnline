@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'hello/index'
   get 'game' => 'game#index'
   get 'menu' => 'menu#index'
+  get 'game' => 'game#update'
   get 'log_in' => 'log_in#index'
   get 'sign_up' => 'accounts#new'
   post "game" => "menu#on_click_button_play"
