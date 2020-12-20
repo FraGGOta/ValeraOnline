@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
     @account.save
     puts
     puts @account.id
+    session[:user_id] = @account.id
     puts
     redirect_to "/menu"
     # redirect_to @account

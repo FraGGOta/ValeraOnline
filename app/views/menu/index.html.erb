@@ -1,6 +1,9 @@
 <h3 align='center'>Balepa Online</h3>
 <form class='form-menu'>
   <div align="center">
+    <%= form_for :stats do |form| %>
+    <%= form.label :id_user, value=@id_user %>
+    <% end %>
     <%= link_to :action => 'on_click_button_play' do %>
       <button class='form-menu-button'>Play</button>
     <% end %>

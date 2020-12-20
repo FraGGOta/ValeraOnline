@@ -1,6 +1,10 @@
 class MenuController < ApplicationController
-  def index; end
-  def on_click_button_play; end
+  def index
+    if session[:user_id] != nil
+      @id_user = session[:user_id]
+      puts session[:user_id]
+    end
+  end
   def on_click_button_login; end
   def on_click_button_signup; end
 end
