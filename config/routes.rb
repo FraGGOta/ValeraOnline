@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "menu" => "game#on_click_button_exit"
   post "log_in" => "menu#on_click_button_login"
   post "sign_up" => "menu#on_click_button_signup"
+  post "log_out" => "menu#on_click_button_logout"
   resources :accounts
   resources :sessions
 end

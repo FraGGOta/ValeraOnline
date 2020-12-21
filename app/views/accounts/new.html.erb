@@ -1,33 +1,54 @@
-<h3 align='center'>Sign Up</h3>
-<%= form_with scope: :form_account, url: accounts_path, local: true do |f| %>
-  <form class='form-menu'>
-    <div align="center">
-      <table>
-      <tbody>
-        <tr>
-          <td style="border: 0">
-            <p>Nickname: </p>
-          </td>
-          <td style="border: 0">
-            <%= f.text_field :nick, value: "" %>
-          </td>
-        </tr>
-        <tr>
-          <td style="border: 0">
-            <p>Password: </p>
-          </td>
-          <td style="border: 0">
-            <%= f.password_field :passwd, value: "" %>
-          </td>
-        </tr>
-        <tr>
-          <td style="border: 0" colspan="2">
-            <div align="center">
-              <%= f.submit :submit, value: "Submit" %>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </div>
-  </form>
-<% end %>
+<script language="javascript">
+  function goToMenu() {
+    document.location.href= "/menu"
+  }
+</script>
+
+<div align="center">
+  <div align="center" style="max-width: 1000px;">
+    <h3 align='center'>Sign Up</h3>
+    <%= form_with scope: :form_account, url: accounts_path, local: true do |f| %>
+      <form class='form-menu'>
+        <table>
+        <tbody>
+          <% if @warning != '' %>
+            <tr>
+              <td colspan="2">
+                <div align="center" style="color:red;">
+                  <%= form_for :stats do |f_warn| %>
+                    <%= f_warn.label :label_warn, value=@warning %>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% else %>
+          <% end %>
+          <tr>
+            <td>
+              <p>Nickname:&nbsp;</p>
+            </td>
+            <td>
+              <%= f.text_field :nick, value: "" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Password:&nbsp;</p>
+            </td>
+            <td>
+              <%= f.password_field :passwd, value: "" %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div align="center">
+                <%= f.submit :submit, value: "Submit" %>
+                <input type="button" value="Cancel" onClick="goToMenu()">
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </form>
+    <% end %>
+  </div>
+</div>
