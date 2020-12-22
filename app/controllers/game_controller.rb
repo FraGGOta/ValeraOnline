@@ -18,7 +18,7 @@ class GameController < ApplicationController
       set_tired(70)
       set_money(100)
     else
-      popup_alert("You cant go job ")
+      popup_alert("You cannot go job")
     end
     update_screen
   end
@@ -101,13 +101,13 @@ class GameController < ApplicationController
   def check_loose
     if @account.health <= 0
       @is_loose = true
-      popup_alert("You loose: you died")
+      popup_alert("You loose!\nYou died")
     elsif @account.mana > 100
       @is_loose = true
-      popup_alert("You loose: you drunk")
+      popup_alert("You loose!\nYou are too drunk")
     elsif @account.money < 0
       @is_loose = true
-      popup_alert("You loose: no money")
+      popup_alert("You loose!\nThere's no money to pay off your debts.")
     elsif
       @is_loose = false
       clear_popup_alert
@@ -128,11 +128,11 @@ class GameController < ApplicationController
 
   private
   def new_game
-    set_health(100)
-    set_mana(0)
-    set_funny(0)
-    set_tired(0)
-    set_money(0)
+    @account.health = 100
+    @account.mana = 0
+    @account.funny = 0
+    @account.tired = 0
+    @account.money = 0
     @account.save
   end
 
@@ -162,12 +162,12 @@ class GameController < ApplicationController
   private
   def set_tired(value)
     @account.tired = (@account.tired + value) <= 0 ? 0 : @account.tired + value
-    @account.tired = @account.tired > 100 ? 100 : @account.mana
+    @account.tired = @account.tired > 100 ? 100 : @account.tired
   end
 
   private
   def set_mana(value)
-    @account.mana = (@account.money + value) <= 0 ? 0 : @account.money + value
+    @account.mana = (@account.mana + value) <= 0 ? 0 : @account.mana + value
     @account.mana = @account.mana.negative? ? 0 : @account.mana
   end
 
