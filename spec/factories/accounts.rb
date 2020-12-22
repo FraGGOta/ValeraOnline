@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :account do
-    login { "MyString" }
-    password { "MyString" }
+    login { 'MyString' }
+    password { 'MyString' }
     health { 1 }
     tired { 1 }
     funny { 1 }

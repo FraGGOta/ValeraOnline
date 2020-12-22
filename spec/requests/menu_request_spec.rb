@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Menus", type: :request do
+RSpec.describe 'Menus', type: :request do
   describe 'GET /menu' do
     it 'returns http success' do
       get '/menu'
