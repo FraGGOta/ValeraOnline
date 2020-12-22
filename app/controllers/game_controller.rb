@@ -2,6 +2,11 @@ class GameController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    if session[:user_id].nil?
+      render plain: 'Access error', status: :unauthorized
+      return
+    end
+    
     get_user_stats
     check_loose
     @warning = session[:last_warn] ? session[:last_warn] : ''

@@ -1,5 +1,10 @@
 class AccountsController < ApplicationController
   def new
+    if !session[:user_id].nil?
+      render plain: 'Access error', status: :unauthorized
+      return
+    end
+
     @warning = ""
   end
 
