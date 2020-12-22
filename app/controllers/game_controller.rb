@@ -4,7 +4,7 @@ class GameController < ApplicationController
   def index
     get_user_stats
     check_loose
-    @warning = session[:last_warn]
+    @warning = session[:last_warn] ? session[:last_warn] : ''
   end
 
   def on_click_button_exit; end
@@ -108,7 +108,7 @@ class GameController < ApplicationController
     elsif @account.money < 0
       @is_loose = true
       popup_alert("You loose!\nThere's no money to pay off your debts.")
-    elsif
+    else
       @is_loose = false
       clear_popup_alert
     end
