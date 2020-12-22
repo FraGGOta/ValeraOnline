@@ -10,10 +10,10 @@ class GameController < ApplicationController
     clear_popup_alert
     get_user_stats
     if @account.mana < 50 && @account.tired < 10
-      @account.funny -= 5
-      @account.mana -= 30
-      @account.money += 100
-      @account.tired += 70
+      set_mana(30)
+      set_funny(-5)
+      set_tired(70)
+      set_money(100)
     else
       popup_alert("You cant go job ")
     end
@@ -23,66 +23,67 @@ class GameController < ApplicationController
   def action_go_behold
     clear_popup_alert
     get_user_stats
-    @account.funny +=1
-    @account.mana -= 10
-    @account.tired += 10
+    set_mana(-10)
+    set_funny(1)
+    set_tired(10)
     update_screen
   end
 
   def action_watch_series
     clear_popup_alert
     get_user_stats
-    @account.funny += 1
-    @account.mana += 30
-    @account.tired += 10
-    @account.health -= 5
-    @account.money -= 20
+    set_health(-5)
+    set_mana(30)
+    set_funny(1)
+    set_tired(-5)
+    set_money(-20)
     update_screen
   end
 
   def action_go_bar
     clear_popup_alert
     get_user_stats
-    @account.funny += 1
-    @account.mana += 60
-    @account.tired += 40
-    @account.health -= 10
-    @account.money -= 100
+    set_health(-10)
+    set_mana(60)
+    set_funny(1)
+    set_tired(40)
+    set_money(-100)
     update_screen
   end
 
   def action_go_drink
     clear_popup_alert
     get_user_stats
-    @account.funny += 5
-    @account.mana += 60
-    @account.tired += 80
-    @account.health -= 80
-    @account.money -= 150
+    set_health(-80)
+    set_mana(60)
+    set_funny(5)
+    set_tired(80)
+    set_money(-150)
     update_screen
   end
 
   def action_go_sleep
     clear_popup_alert
     get_user_stats
-    @account.funny -= 3
-    @account.mana -= 50
-    @account.tired -= 70
-    @account.health += 90
-    @account.money -= 150
+    set_health(90)
+    set_mana(-50)
+    set_funny(-3)
+    set_tired(-70)
+    set_money(-150)
     update_screen
   end
 
   def action_go_sing
     clear_popup_alert
     get_user_stats
-    @account.funny += 1
-    @account.mana += 10
+    set_mana(10)
+    set_funny(1)
+    set_money(10)
     if @account.mana >= 40 && @account.mana <= 70
-      @account.money += 50
+      set_money(50)
       popup_alert("Bonus money!")
     end
-    @account.tired += 20
+    set_tired(20)
     update_screen
   end
 
@@ -122,12 +123,17 @@ class GameController < ApplicationController
 
   private
   def new_game
-    @account.health = 100
-    @account.mana = 0
-    @account.funny = 0
-    @account.tired = 0
-    @account.money = 0
+    set_health(100)
+    set_mana(0)
+    set_funny(0)
+    set_tired(0)
+    set_money(0)
     @account.save
+  end
+
+  private
+  def get_user_stats
+    @account = Account.find_by_id(session[:user_id])
   end
 
   private
@@ -137,7 +143,31 @@ class GameController < ApplicationController
   end
 
   private
-  def get_user_stats
-    @account = Account.find_by_id(session[:user_id])
+  def set_money(value)
+    @account.money += (@account.money + value) <= 0 ? 0 : value
+  end
+
+  private
+  def set_funny(value)
+    @account.funny += (@account.funny + value) <= -10 ? -10 : value
+    @account.funny = @account.funny > 10 ? 10 : @account.funny
+  end
+
+  private
+  def set_tired(value)
+    @account.tired += (@account.tired + value) <= 0 ? 0 : value
+    @account.tired = @account.tired > 100 ? 100 : @account.mana
+  end
+
+  private
+  def set_mana(value)
+    @account.mana += (@account.money + value) <= 0 ? 0 : value
+    @account.mana = @account.mana.negative? ? 0 : @account.mana
+  end
+
+  private
+  def set_health(value)
+    @account.health += (@account.health + value) <= 0 ? 0 : value
+    @account.health = @account.health > 100 ? 100 : @account.health
   end
 end

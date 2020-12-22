@@ -14,10 +14,10 @@
     <progress class='form-game-progress-stats' max="100" value="<%= @account.mana %>"></progress>
     Funny
     <%= form.label :funny_value, value=@account.funny %>
-    <progress class='form-game-progress-stats' max="100" value="<%= @account.funny %>"></progress>
+    <progress class='form-game-progress-stats' max="10" value="<%= @account.funny %>"></progress>
     Money
     <%= form.label :money_value, value=@account.money %>
-    <progress class='form-game-progress-stats' max="100" value="<%= @account.money %>"></progress>
+    <progress class='form-game-progress-stats' max="1000" value="<%= @account.money %>"></progress>
   <% end %>
 </form>
 <% if @warning != '' %>
