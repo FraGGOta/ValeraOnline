@@ -24,6 +24,7 @@ class AccountsController < ApplicationController
       @account.funny = 0
       @account.tired = 0
       @account.money = 0
+      @account.points = 0
       @account.save
       session[:user_id] = @account.id
       redirect_to "/menu"

@@ -96,6 +96,7 @@ class GameController < ApplicationController
   end
 
   def start_new_game
+    puts "-----------------------"
     clear_popup_alert
     get_user_stats
     new_game
@@ -115,7 +116,6 @@ class GameController < ApplicationController
       popup_alert("You loose!\nThere's no money to pay off your debts.")
     else
       @is_loose = false
-      clear_popup_alert
     end
   end
 
@@ -144,6 +144,7 @@ class GameController < ApplicationController
   private
   def get_user_stats
     @account = Account.find_by_id(session[:user_id])
+    @account.points += 1
   end
 
   private
