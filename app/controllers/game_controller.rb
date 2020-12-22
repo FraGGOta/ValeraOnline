@@ -1,4 +1,5 @@
 class GameController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     get_user_stats
     check_loose
@@ -144,30 +145,30 @@ class GameController < ApplicationController
 
   private
   def set_money(value)
-    @account.money += (@account.money + value) <= 0 ? 0 : value
+    @account.money = (@account.money + value) <= 0 ? 0 : @account.money  + value
   end
 
   private
   def set_funny(value)
-    @account.funny = (@account.funny + value) <= -10 ? -10 : value
+    @account.funny = (@account.funny + value) <= -10 ? -10 : @account.funny + value
     @account.funny = @account.funny > 10 ? 10 : @account.funny
   end
 
   private
   def set_tired(value)
-    @account.tired += (@account.tired + value) <= 0 ? 0 : value
+    @account.tired = (@account.tired + value) <= 0 ? 0 : @account.tired + value
     @account.tired = @account.tired > 100 ? 100 : @account.mana
   end
 
   private
   def set_mana(value)
-    @account.mana += (@account.money + value) <= 0 ? 0 : value
+    @account.mana = (@account.money + value) <= 0 ? 0 : @account.money + value
     @account.mana = @account.mana.negative? ? 0 : @account.mana
   end
 
   private
   def set_health(value)
-    @account.health += (@account.health + value) <= 0 ? 0 : value
+    @account.health = (@account.health + value) < 0 ? 0 : @account.health + value
     @account.health = @account.health > 100 ? 100 : @account.health
   end
 end
