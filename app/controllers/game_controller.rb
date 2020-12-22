@@ -149,7 +149,7 @@ class GameController < ApplicationController
 
   private
   def set_funny(value)
-    @account.funny += (@account.funny + value) <= -10 ? -10 : value
+    @account.funny = (@account.funny + value) <= -10 ? -10 : value
     @account.funny = @account.funny > 10 ? 10 : @account.funny
   end
 
