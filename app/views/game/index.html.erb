@@ -4,32 +4,50 @@
   <h4>Параметры Валеры</h4>
   Health
   <%= form_with do |form| %>
-  <%= form.label :health_value, value=@account.health %>
-  <progress id='health_progress' class='form-game-progress-stats' max="100" value=<%= @account.health %>></progress>
-  Tired
-  <%= form.label :tired_value, value=@account.tired %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @account.tired %>"></progress>
-  Mana
-  <%= form.label :mana_value, value=@account.mana %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @account.mana %>"></progress>
-  Funny
-  <%= form.label :funny_value, value=@account.funny %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @account.funny %>"></progress>
-  Money
-  <%= form.label :money_value, value=@account.money %>
+    <%= form.label :health_value, value=@account.health %>
+    <progress id='health_progress' class='form-game-progress-stats' max="100" value=<%= @account.health %>></progress>
+    Tired
+    <%= form.label :tired_value, value=@account.tired %>
+    <progress class='form-game-progress-stats' max="100" value="<%= @account.tired %>"></progress>
+    Mana
+    <%= form.label :mana_value, value=@account.mana %>
+    <progress class='form-game-progress-stats' max="100" value="<%= @account.mana %>"></progress>
+    Funny
+    <%= form.label :funny_value, value=@account.funny %>
+    <progress class='form-game-progress-stats' max="100" value="<%= @account.funny %>"></progress>
+    Money
+    <%= form.label :money_value, value=@account.money %>
+    <progress class='form-game-progress-stats' max="100" value="<%= @account.money %>"></progress>
   <% end %>
-  <progress class='form-game-progress-stats' max="100" value="<%= @account.money %>"></progress>
 </form>
+<% if @warning != '' %>
+  <tr>
+    <td colspan="2">
+      <div align="center" style="color:red;">
+        <%= form_for :stats do |f_warn| %>
+          <%= f_warn.label :label_warn, value=@warning %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+<% else %>
+<% end %>
+<% if @is_loose %>
+  <td nowrap>
+      <%= button_to 'New game', 'new_game' %>
+  </td>
+<% else %>
+<% end %>
 <form class='form-game-buttons-action'>
-  Actions
-  <%= form_for @account do |form| %>
-  <%= radio_button_tag 'theme', 'Go job', true %> Plain
-  <br><%= radio_button_tag 'theme', 'Go sleep' %> Desert
-  <br><%= radio_button_tag 'theme', 'Go bar' %> Green
-  <br><%= radio_button_tag 'theme', 'Go work' %> Corporate
-  <br><%= radio_button_tag 'theme', 'Go chill' %> Funky
-  <%= form.submit value: "Submit" %>
-  <% end %>
+  <p>Actions</p>
+  <%= button_to '' %>
+  <%= button_to 'Go Job', 'go_job', :disabled => @is_loose %>
+  <%= button_to 'Go behold', 'go_behold', :disabled => @is_loose %>
+  <%= button_to 'Watch series', 'watch_series', :disabled => @is_loose %>
+  <%= button_to 'Go bar', 'go_bar', :disabled => @is_loose %>
+  <%= button_to 'Go drink', 'go_drink', :disabled => @is_loose %>
+  <%= button_to 'Go sleep', 'go_sleep', :disabled => @is_loose %>
+  <%= button_to 'Go sing', 'go_sing', :disabled => @is_loose %>
 </form>
 <%= link_to :action => 'on_click_button_exit' do %>
   <button class='game-button-exit'>Exit</button>

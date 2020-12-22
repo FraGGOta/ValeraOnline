@@ -14,6 +14,11 @@ class AccountsController < ApplicationController
       @account = Account.new()
       @account.login = params[:form_account][:nick]
       @account.password = params[:form_account][:passwd]
+      @account.health = 100
+      @account.mana = 0
+      @account.funny = 0
+      @account.tired = 0
+      @account.money = 0
       @account.save
       session[:user_id] = @account.id
       redirect_to "/menu"

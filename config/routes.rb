@@ -10,6 +10,14 @@ Rails.application.routes.draw do
   post "log_in" => "menu#on_click_button_login"
   post "sign_up" => "menu#on_click_button_signup"
   post "log_out" => "menu#on_click_button_logout"
+  post "go_job" => "game#action_go_job"
+  post "go_behold" => "game#action_go_behold"
+  post "watch_series" => "game#action_watch_series"
+  post "go_bar" => "game#action_go_bar"
+  post "go_drink" => "game#action_go_drink"
+  post "go_sleep" => "game#action_go_sleep"
+  post "go_sing" => "game#action_go_sing"
+  post "new_game" => "game#start_new_game"
   resources :accounts
   resources :sessions
 end
