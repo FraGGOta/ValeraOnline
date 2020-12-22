@@ -34,13 +34,15 @@
 <% end %>
 <% if @is_loose %>
   <td nowrap>
-      <%= button_to 'New game', 'new_game' %>
+    <%= button_to 'New game', 'new_game' %>
   </td>
 <% else %>
 <% end %>
 <form class='form-game-buttons-action'>
   <p>Actions</p>
-  <%= button_to '' %>
+  <div style="width: 0px; height: 0px; opacity: 0;">
+    <%= button_to '', :disabled => true%>
+  </div>
   <%= button_to 'Go Job', 'go_job', :disabled => @is_loose %>
   <%= button_to 'Go behold', 'go_behold', :disabled => @is_loose %>
   <%= button_to 'Watch series', 'watch_series', :disabled => @is_loose %>
@@ -50,5 +52,5 @@
   <%= button_to 'Go sing', 'go_sing', :disabled => @is_loose %>
 </form>
 <%= link_to :action => 'on_click_button_exit' do %>
-  <button class='game-button-exit'>Exit</button>
+  <button>Exit</button>
 <% end %>

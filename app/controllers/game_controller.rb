@@ -1,8 +1,10 @@
 class GameController < ApplicationController
   skip_before_action :verify_authenticity_token
+
   def index
     get_user_stats
     check_loose
+    @warning = session[:last_warn]
   end
 
   def on_click_button_exit; end
@@ -114,12 +116,14 @@ class GameController < ApplicationController
 
   private
   def popup_alert(message)
-    @warning = message
+    #@warning = message
+    session[:last_warn] = message
   end
 
   private
   def clear_popup_alert
-    @warning = ""
+    #@warning = ""
+    session[:last_warn] = ''
   end
 
   private
@@ -140,7 +144,8 @@ class GameController < ApplicationController
   private
   def update_screen
     @account.save
-    render 'index'
+    #render 'index'
+    redirect_to '/game'
   end
 
   private

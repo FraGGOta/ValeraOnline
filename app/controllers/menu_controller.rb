@@ -1,4 +1,6 @@
 class MenuController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  
   def index
     if session[:user_id] != nil
       @is_authorized = true
