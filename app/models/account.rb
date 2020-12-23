@@ -20,6 +20,14 @@ class Account < ApplicationRecord
     tired_set(v_t)
   end
 
+  def stats_reset
+    self.health = 100
+    self.mana = 0
+    self.funny = 0
+    self.money = 0
+    self.tired = 0
+  end
+
   def money_set(value)
     self.money = (money + value) <= 0 ? 0 : money + value
   end

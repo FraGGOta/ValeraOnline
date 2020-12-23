@@ -78,7 +78,7 @@ class GameController < ApplicationController
   def start_new_game
     session[:last_warn] = ''
     user_stats_get
-    @account.stats_apply(100, 0, 0, 0, 0)
+    @account.stats_reset
     @account.save
     update_screen
   end
