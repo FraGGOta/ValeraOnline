@@ -126,6 +126,15 @@ class GameController < ApplicationController
 
   def user_stats_get
     @account = Account.find_by(id: session[:user_id])
+    if @account.nil?
+        @account = Account.new
+        @account.health = 100
+        @account.mana = 0
+        @account.funny = 0
+        @account.tired = 0
+        @account.money = 0
+        @account.points = 0
+    end
     @account.points += 1
   end
 
@@ -152,7 +161,7 @@ class GameController < ApplicationController
     @account.mana = (@account.mana + value) <= 0 ? 0 : @account.mana + value
     @account.mana = @account.mana.negative? ? 0 : @account.mana
   end
-
+  
   def health_set(value)
     @account.health = (@account.health + value).negative? ? 0 : @account.health + value
     @account.health = @account.health > 100 ? 100 : @account.health
