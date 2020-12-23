@@ -7,12 +7,12 @@
 
 ```bash
 cd
-git clone [https://github.com/rbenv/rbenv.git] ~/.rbenv
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 exec $SHELL
 
-git clone [https://github.com/rbenv/ruby-build.git] ~/.rbenv/plugins/ruby-build
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 exec $SHELL
 
@@ -58,6 +58,10 @@ sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
 createdb rails_starter_project_development
 ```
 
+## Run program
+```bash
+rails s
+```
 ## Run test
 ```bash
 rspec
