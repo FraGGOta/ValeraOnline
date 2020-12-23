@@ -9,8 +9,7 @@ module SpecTestHelper
     account_user.mana = 0
     account_user.points = 0
     account_user.id = 1
-    account_user
-    # session[:user_id] = account_user.id
+    session[:user_id] = account_user.id
   end
 end
 

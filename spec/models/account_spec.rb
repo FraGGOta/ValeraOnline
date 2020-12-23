@@ -1,18 +1,9 @@
 require 'rails_helper'
+require 'support/factory_bot'
 
 RSpec.describe Account, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
-  it 'returns all users' do
-    # setup
-    # active_user = create(:user, active: true)
-    # non_active_user = create(:user, active: false)
-
-    # exercise
-    # result = User.active
-
-    # verify
-    # expect(result).to eq [active_user]
-
-    # teardown is handled for you by RSpec
+  it 'returns access write login' do
+    account = build(:account, login: 'Josh')
+    expect(account.login).to eq 'Josh'
   end
 end
