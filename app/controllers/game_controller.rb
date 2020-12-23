@@ -7,6 +7,7 @@ class GameController < ApplicationController
       return
     end
     user_stats_get
+
     check_loose
     @warning = session[:last_warn] || ''
   end
@@ -17,6 +18,7 @@ class GameController < ApplicationController
     session[:last_warn] = ''
     user_stats_get
     if @account.mana < 50 && @account.tired < 10
+      @account.init_fields
       @account.stats_apply(0, 30, 100, -5, 10)
     else
       session[:last_warn] = 'You cannot go job'
@@ -102,12 +104,7 @@ class GameController < ApplicationController
     @account = Account.find_by(id: session[:user_id])
     if @account.nil?
       @account = Account.new
-      @account.health = 100
-      @account.mana = 0
-      @account.funny = 0
-      @account.money = 0
-      @account.tired = 0
-      @account.points = 0
+      @account.init_fields
     end
     @account.points += 1
   end

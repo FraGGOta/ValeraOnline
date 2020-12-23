@@ -3,6 +3,15 @@ class Account < ApplicationRecord
     "#{login} #{password}"
   end
 
+  def init_fields
+    self.health = 100
+    self.mana = 0
+    self.funny = 0
+    self.money = 0
+    self.tired = 0
+    self.points = 0
+  end
+
   def stats_apply(v_h, v_mana, v_money, v_f, v_t)
     health_set(v_h)
     mana_set(v_mana)
