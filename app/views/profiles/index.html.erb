@@ -1,0 +1,57 @@
+<script language="javascript">
+  function goToMenu() {
+    document.location.href= "/menu"
+  }
+</script>
+
+<div align="center">
+  <div align="center" style="max-width: 1000px;">
+    <%= form_with scope: :form_profile, url: profiles_path, local: true do |f| %>
+      <table>
+      <tbody>
+        <tr>
+          <td>
+            <label>Nickname:&nbsp;</label>
+          </td>
+          <td>
+            <%= f.label :nickname, value=@nickname %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Points:&nbsp;</label>
+          </td>
+          <td>
+            <%= f.label :points, value=@points %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>New password:&nbsp;</label>
+          </td>
+          <td>
+            <%= f.password_field :password, value: "" %>
+          </td>
+        </tr>
+        <% if @warning != '' %>
+          <tr>
+            <td colspan="2">
+              <div align="center" style="color:red;">
+                <%= f.label :label_warn, value=@warning %>
+              </div>
+            </td>
+          </tr>
+        <% else %>
+        <% end %>
+        <tr>
+          <td colspan="2">
+            <div align="center">
+              <%= f.submit :submit, value: "Submit", data: { confirm: 'Are you sure?' }%>
+              <input type="button" value="Back to menu" onClick="goToMenu()">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </div>
+</div>

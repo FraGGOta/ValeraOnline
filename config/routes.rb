@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'menu' => 'menu#index'
   get 'log_in' => 'sessions#new'
   get 'sign_up' => 'accounts#new'
+  get 'profile' => 'profiles#index'
   post 'game' => 'menu#on_click_button_play'
   post 'menu' => 'game#on_click_button_exit'
   post 'log_in' => 'menu#on_click_button_login'
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
   post 'go_sleep' => 'game#action_go_sleep'
   post 'go_sing' => 'game#action_go_sing'
   post 'new_game' => 'game#start_new_game'
+  post 'profile' => 'menu#on_click_profile'
   resources :accounts
   resources :sessions
+  resources :profiles
 end

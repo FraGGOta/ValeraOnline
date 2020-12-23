@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
     if params[:form_account][:nick] == '' || params[:form_account][:passwd] == ''
       @warning = 'Invalid nickname or password!'
       render 'new'
-    elsif !Account.find_by(login: params[:form_account][:nick]).nil
+    elsif !Account.find_by(login: params[:form_account][:nick]).nil?
       @warning = 'User with this nickname already exists!'
       render 'new'
     else

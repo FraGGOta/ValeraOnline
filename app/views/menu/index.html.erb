@@ -1,55 +1,57 @@
-  <div align="center">
-    <div align="center" style="max-width: 1000px;">
-      <form class='form-menu'>
-        <table>
-        <tbody>
-          <tr>
-            <td width="100%">
+<div align="center">
+  <div align="center" style="max-width: 1000px;">
+    <form class='form-menu'>
+      <table>
+      <tbody>
+        <tr>
+          <td width="100%">
+          </td>
+          <% if !@is_authorized %>
+            <td nowrap>
+              <%= link_to :action => 'on_click_button_login' do %>
+                <button class='button'>Log In</button>
+              <% end %>
             </td>
-            <% if !@is_authorized %>
-              <td nowrap>
-                <%= link_to :action => 'on_click_button_login' do %>
-                  <button class='button'>Log In</button>
-                <% end %>
-              </td>
-              <td nowrap>
-                <%= link_to :action => 'on_click_button_signup' do %>
-                  <button class='button'>Sign Up</button>
-                <% end %>
-              </td>
-            <% else %>
-              <td nowrap>
-                <%= form_for :stats do |form| %>
+            <td nowrap>
+              <%= link_to :action => 'on_click_button_signup' do %>
+                <button class='button'>Sign Up</button>
+              <% end %>
+            </td>
+          <% else %>
+            <td nowrap>
+              <%= form_for :stats do |form| %>
+                <%= link_to :action => 'on_click_profile' do %>
                   <%= form.label :id_user, value=@id_user %>
-                  <label>&nbsp;</label>
                 <% end %>
-              </td>
-              <td>
-                <%= button_to 'Exit', 'log_out' %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </div>
-      
-      <div align="center">
-        <table>
-        <tbody>
-          <tr>
-            <td>
-              <h3 align='center'>Balepa Online</h3>
+                <label>&nbsp;</label>
+              <% end %>
             </td>
-          </tr>
-          <tr>
             <td>
-              <div align="center">
-                <%= link_to :action => 'on_click_button_play' do %>
-                  <%= button_to 'Play', 'game', :disabled => !@is_authorized %>
-                <% end %>
-              </div>
+              <%= button_to 'Exit', 'log_out' %>
             </td>
-          </tr>
-        </tbody>
+          <% end %>
+        </tr>
+      </tbody>
     </form>
+    
+    <div align="center">
+      <table>
+      <tbody>
+        <tr>
+          <td>
+            <h3 align='center'>Balepa Online</h3>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div align="center">
+              <%= link_to :action => 'on_click_button_play' do %>
+                <%= button_to 'Play', 'game', :disabled => !@is_authorized %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </div>
   </div>
 </div>

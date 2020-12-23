@@ -18,6 +18,8 @@ class MenuController < ApplicationController
 
   def on_click_button_signup; end
 
+  def on_click_profile; end
+
   def on_click_button_logout
     session.clear
     @id_user = ''
