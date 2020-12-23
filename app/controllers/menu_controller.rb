@@ -12,7 +12,9 @@ class MenuController < ApplicationController
     end
   end
 
-  def on_click_button_play; end
+  def on_click_button_play
+    redirect_to '\game'
+  end
 
   def on_click_button_login; end
 

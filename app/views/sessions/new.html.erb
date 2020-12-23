@@ -8,47 +8,33 @@
   <div align="center" style="max-width: 1000px;">
     <h3 align='center'>Log In</h3>
     <%= form_with scope: :form_account, url: sessions_path, local: true do |f| %>
-      <form class='form-menu'>
-        <table>
-        <tbody>
-          <% if @warning != '' %>
-            <tr>
-              <td colspan="2">
-                <div align="center" style="color:red;">
-                  <%= form_for :stats do |f_warn| %>
-                    <%= f_warn.label :label_warn, value=@warning %>
-                  <% end %>
-                </div>
-              </td>
-            </tr>
-          <% else %>
-          <% end %>
+      <table>
+      <tbody>
+        <% if @warning != '' %>
           <tr>
-            <td>
-              <p>Nickname:&nbsp;</p>
-            </td>
-            <td>
-              <%= f.text_field :nick, value: "" %>
+            <td colspan="2" align="center" style="color:red;">
+              <%= form_for :stats do |f_warn| %>
+                <%= f_warn.label :label_warn, value=@warning %>
+              <% end %>
             </td>
           </tr>
-          <tr>
-            <td>
-              <p>Password:&nbsp;</p>
-            </td>
-            <td>
-              <%= f.password_field :passwd, value: "" %>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <div align="center">
-                <%= f.submit :submit, value: "Submit" %>
-                <input type="button" value="Cancel" onClick="goToMenu()">
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </form>
+        <% else %>
+        <% end %>
+        <tr>
+          <td><p>Nickname:&nbsp;</p></td>
+          <td><%= f.text_field :nick, value: "" %></td>
+        </tr>
+        <tr>
+          <td><p>Password:&nbsp;</p></td>
+          <td><%= f.password_field :passwd, value: "" %></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <%= f.submit :submit, value: "Submit" %>
+            <input type="button" value="Cancel" onClick="goToMenu()">
+          </td>
+        </tr>
+      </tbody>
     <% end %>
   </div>
 </div>

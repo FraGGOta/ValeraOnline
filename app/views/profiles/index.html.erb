@@ -10,45 +10,29 @@
       <table>
       <tbody>
         <tr>
-          <td>
-            <label>Nickname:&nbsp;</label>
-          </td>
-          <td>
-            <%= f.label :nickname, value=@nickname %>
-          </td>
+          <td><label>Nickname:&nbsp;</label></td>
+          <td><%= f.label :nickname, value=@nickname %></td>
         </tr>
         <tr>
-          <td>
-            <label>Points:&nbsp;</label>
-          </td>
-          <td>
-            <%= f.label :points, value=@points %>
-          </td>
+          <td><label>Points:&nbsp;</label></td>
+          <td><%= f.label :points, value=@points %></td>
         </tr>
         <tr>
-          <td>
-            <label>New password:&nbsp;</label>
-          </td>
-          <td>
-            <%= f.password_field :password, value: "" %>
-          </td>
+          <td><label>New password:&nbsp;</label></td>
+          <td><%= f.password_field :password, value: "" %></td>
         </tr>
         <% if @warning != '' %>
           <tr>
-            <td colspan="2">
-              <div align="center" style="color:red;">
-                <%= f.label :label_warn, value=@warning %>
-              </div>
+            <td colspan="2" align="center" style="color:red;">
+              <%= f.label :label_warn, value=@warning %>
             </td>
           </tr>
         <% else %>
         <% end %>
         <tr>
-          <td colspan="2">
-            <div align="center">
-              <%= f.submit :submit, value: "Submit", data: { confirm: 'Are you sure?' }%>
-              <input type="button" value="Back to menu" onClick="goToMenu()">
-            </div>
+          <td colspan="2" align="center">
+            <%= f.submit :submit, value: "Submit" %>
+            <input type="button" value="Back to menu" onClick="goToMenu()">
           </td>
         </tr>
       </tbody>
