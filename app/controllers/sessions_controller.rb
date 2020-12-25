@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
 
   def create
     user = Account.find_by(login: params[:form_account][:nick])
-    if user && (user.password == params[:form_account][:passwd])
+    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base[0..31])
+    decrypted = crypt.decrypt_and_verify(user.password)
+    if user && (decrypted == params[:form_account][:passwd])
       session[:user_id] = user.id
       redirect_to '/menu'
     else
