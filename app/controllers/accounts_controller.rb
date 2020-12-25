@@ -29,15 +29,9 @@ class AccountsController < ApplicationController
   end
 
   def initialize_account
-    puts Rails.application.secrets.secret_key_base
     @account.login = params[:form_account][:nick]
     crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base[0..31])
     @account.password = crypt.encrypt_and_sign(params[:form_account][:passwd])
-    @account.health = 100
-    @account.mana = 0
-    @account.funny = 0
-    @account.tired = 0
-    @account.money = 0
-    @account.points = 0
+    @account.init_fields
   end
 end
