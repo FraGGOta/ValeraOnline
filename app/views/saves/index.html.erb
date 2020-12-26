@@ -1,0 +1,36 @@
+<script language="javascript">
+  function goToGame() {
+    document.location.href= "/game"
+  }
+</script>
+
+<div align="center">
+  <div align="center" style="max-width: 1000px;">
+    <%= form_with do |f| %>
+      <table>
+      <tbody>
+        <tr align="center">
+          <div style="width: 0px; height: 0px; opacity: 0;">
+            <%= button_to '', :disabled => true%>
+          </div>
+          <td><label>Save&nbsp;name:&nbsp;</label></td>
+          <td><%= f.text_field :savename, value: "" %></td>
+          <td colspan="2" align="center">
+            <%= button_to 'Save', 'save_selected'%>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" colspan="3">
+            <%= f.select :saves_list, @save_names_list, :multiple=>false %>
+          </td>
+        </tr>
+        <tr nowrap>
+          <td align="center" colspan="3" nowrap>
+            <%= button_to 'Load', 'load_selected'%>
+            <input type="button" value="Cancel" onClick="goToGame()">
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </div>
+</div>

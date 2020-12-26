@@ -16,6 +16,10 @@ class MenuController < ApplicationController
     redirect_to '\game'
   end
 
+  def on_click_button_load
+    redirect_to '\saveload'
+  end
+
   def on_click_button_login; end
 
   def on_click_button_signup; end
