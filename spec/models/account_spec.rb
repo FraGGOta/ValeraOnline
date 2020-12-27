@@ -63,12 +63,17 @@ RSpec.describe Account, type: :model do
     end
 
     it 'test load_from_saveslot' do
-      account = build(:account)
-      account.init_fields
-      slot = SaveSlot.new
-      slot.base_init
+      (account = build(:account)).init_fields
+      (slot = SaveSlot.new).base_init
       account.load_from_saveslot(slot)
       expect(account.health).to eq 100
+    end
+
+    it 'test set_from_account' do
+      (account = build(:account)).init_fields
+      (slot = SaveSlot.new).base_init
+      slot.set_from_account(account, 'save_01')
+      expect(slot.health).to eq 100
     end
   end
 end
