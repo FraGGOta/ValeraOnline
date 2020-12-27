@@ -22,8 +22,6 @@ Rails.application.routes.draw do
   post 'go_sing' => 'game#action_go_sing'
   post 'new_game' => 'game#start_new_game'
   post 'profile' => 'menu#on_click_profile'
-  # post 'save_selected' => 'saves#on_click_save'
-  # post 'load_selected' => 'saves#on_click_load'
   resources :accounts
   resources :sessions
   resources :profiles
