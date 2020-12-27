@@ -2,7 +2,8 @@ class SavesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
-    nil unless session[:user_id].nil?
+    return unless session[:user_id].nil?
+
     render plain: 'Access error', status: :unauthorized
   end
 
