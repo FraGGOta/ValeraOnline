@@ -61,5 +61,14 @@ RSpec.describe Account, type: :model do
       account.tired_set(1000)
       expect(account.tired).to eq 100
     end
+
+    it 'test load_from_saveslot' do
+      account = build(:account)
+      account.init_fields
+      slot = SaveSlot.new
+      slot.base_init
+      account.load_from_saveslot(slot)
+      expect(account.health).to eq 100
+    end
   end
 end

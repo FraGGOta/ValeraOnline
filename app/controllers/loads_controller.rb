@@ -10,15 +10,21 @@ class LoadsController < ApplicationController
     saves_list = SaveSlot.where(account_id: session[:user_id]).all
     @save_names_list = []
 
-    if !saves_list.nil?
-      for it in saves_list
-        @save_names_list.append(it.name)
-      end
+    saves_list&.each do |it|
+      @save_names_list.append(it.name)
     end
   end
 
   def create
-    
+    selected_save_name = params[:load_form][:saves_list]
+    saves_list = SaveSlot.where(account_id: session[:user_id]).all
+    saves_list&.each do |it|
+      next unless it.name == selected_save_name
+
+      user = Account.find_by(id: session[:user_id])
+      user.load_from_saveslot(it)
+      user.save
+    end
     redirect_to '/game'
   end
 end

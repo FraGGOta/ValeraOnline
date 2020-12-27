@@ -10,13 +10,8 @@ class SessionsController < ApplicationController
 
   def create
     user = Account.find_by(login: params[:form_account][:nick])
-    if user.nil?
-      @warning = 'Incorrect nickname or password!'
-      render 'new'
-      return
-    end
-    decrypted = decrypted_password_user(user.password)
-    if decrypted == params[:form_account][:passwd]
+
+    if !user.nil? && decrypted_password_user(user.password) == params[:form_account][:passwd]
       session[:user_id] = user.id
       redirect_to '/menu'
     else

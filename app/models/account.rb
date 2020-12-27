@@ -50,4 +50,12 @@ class Account < ApplicationRecord
     self.health = (health + value).negative? ? 0 : health + value
     self.health = health > 100 ? 100 : health
   end
+
+  def load_from_saveslot(slot)
+    self.health = slot.health
+    self.mana = slot.mana
+    self.funny = slot.funny
+    self.money = slot.money
+    self.tired = slot.tired
+  end
 end
