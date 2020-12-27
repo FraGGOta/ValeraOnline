@@ -6,7 +6,7 @@
 
 <div align="center">
   <div align="center" style="max-width: 1000px;">
-    <%= form_with do |f| %>
+    <%= form_with scope: :save_form, url: saves_path, local: true do |f| %>
       <table>
       <tbody>
         <tr align="center">
@@ -16,7 +16,7 @@
           <td><label>Save&nbsp;name:&nbsp;</label></td>
           <td><%= f.text_field :savename, value: "" %></td>
           <td colspan="2" align="center">
-            <%= button_to 'Save', 'save_selected'%>
+            <%= f.submit :submit, value: "Save" %>
           </td>
         </tr>
         <tr>

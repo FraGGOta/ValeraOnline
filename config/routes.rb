@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   root 'menu#index'
   get 'hello/index'
   get 'game' => 'game#index'
-  get 'saveload' => 'saves#index'
   get 'menu' => 'menu#index'
   get 'log_in' => 'sessions#new'
   get 'sign_up' => 'accounts#new'
+  get 'save' => 'saves#new'
   get 'profile' => 'profiles#index'
   post 'play_btn' => 'menu#on_click_button_play'
   post 'load_btn' => 'menu#on_click_button_load'
@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   post 'go_sing' => 'game#action_go_sing'
   post 'new_game' => 'game#start_new_game'
   post 'profile' => 'menu#on_click_profile'
-  post 'save_selected' => 'saves#on_click_save'
-  post 'load_selected' => 'saves#on_click_load'
+  # post 'save_selected' => 'saves#on_click_save'
+  # post 'load_selected' => 'saves#on_click_load'
   resources :accounts
   resources :sessions
   resources :profiles
+  resources :saves
 end

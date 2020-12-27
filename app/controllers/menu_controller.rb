@@ -17,7 +17,7 @@ class MenuController < ApplicationController
   end
 
   def on_click_button_load
-    redirect_to '\saveload'
+    redirect_to '\save'
   end
 
   def on_click_button_login; end
