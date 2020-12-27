@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   get 'log_in' => 'sessions#new'
   get 'sign_up' => 'accounts#new'
   get 'save' => 'saves#new'
+  get 'load' => 'loads#new'
   get 'profile' => 'profiles#index'
   post 'play_btn' => 'menu#on_click_button_play'
   post 'load_btn' => 'menu#on_click_button_load'
+  post 'save_btn' => 'menu#on_click_button_save'
   post 'menu' => 'game#on_click_button_exit'
   post 'log_in' => 'menu#on_click_button_login'
   post 'sign_up' => 'menu#on_click_button_signup'
@@ -26,4 +28,5 @@ Rails.application.routes.draw do
   resources :sessions
   resources :profiles
   resources :saves
+  resources :loads
 end

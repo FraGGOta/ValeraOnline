@@ -18,13 +18,18 @@
             </div>
             <div align="center">
               <br>
-              <%= button_to 'New game', 'new_game' %>
+              <%= button_to 'New game', 'new_game', {class: 'game-action-button'}%>
             </div>
           </td>
         </tr>
         <tr>
           <td colspan="4" align="center">
-            <%= button_to 'Save/Load game', 'load_btn'%>
+            <%= button_to 'Save game', 'save_btn', {class: 'game-action-button'}%>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center">
+            <%= button_to 'Load game', 'load_btn', {class: 'game-action-button'}%>
           </td>
         </tr>
         <tr>
