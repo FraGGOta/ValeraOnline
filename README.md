@@ -1,5 +1,8 @@
 # Ruby Project
 ## Valera Online
+
+![Unit Tests & Lint](https://github.com/JokePenny/ValeraOnline/workflows/Unit%20Tests%20&%20Lint/badge.svg)
+
 ## Installing Ruby
 
 ```bash
