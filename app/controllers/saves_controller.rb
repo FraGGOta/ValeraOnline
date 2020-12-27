@@ -11,12 +11,10 @@ class SavesController < ApplicationController
   end
 
   def on_click_save
-    
     redirect_to '/game'
   end
 
   def on_click_load
-    
     redirect_to '/game'
   end
 end
