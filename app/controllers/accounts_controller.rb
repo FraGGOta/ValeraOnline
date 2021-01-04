@@ -21,17 +21,9 @@ class AccountsController < ApplicationController
   end
 
   def create_new_account
-    @account = Account.new
-    initialize_account
-    @account.save
-    session[:user_id] = @account.id
+    account = Account.new
+    account.init(params[:form_account][:nick], params[:form_account][:passwd])
+    session[:user_id] = account.id
     redirect_to '/menu'
-  end
-
-  def initialize_account
-    @account.login = params[:form_account][:nick]
-    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base[0..31])
-    @account.password = crypt.encrypt_and_sign(params[:form_account][:passwd])
-    @account.init_fields
   end
 end

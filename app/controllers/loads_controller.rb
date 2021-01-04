@@ -25,6 +25,7 @@ class LoadsController < ApplicationController
       user.load_from_saveslot(it)
       user.save
     end
+    session[:last_warn] = ''
     redirect_to '/game'
   end
 end

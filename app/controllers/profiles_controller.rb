@@ -5,27 +5,21 @@ class ProfilesController < ApplicationController
       return
     end
     @warning = ''
-    @account = Account.find_by(id: session[:user_id])
-    @nickname = @account.login
-    @points = @account.points
+    account = Account.find_by(id: session[:user_id])
+    @nickname = account.login
+    @points = account.points
   end
 
   def create
-    @account = Account.find_by(id: session[:user_id])
+    account = Account.find_by(id: session[:user_id])
     if params[:form_profile][:password] == ''
       @warning = 'Invalid password!'
     else
-      create_new_password
+      account.new_password(params[:form_profile][:password])
+      @warning = 'Password changed successfully!'
     end
-    @nickname = @account.login
-    @points = @account.points
+    @nickname = account.login
+    @points = account.points
     render 'index'
-  end
-
-  def create_new_password
-    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base[0..31])
-    @account.password = crypt.encrypt_and_sign(params[:form_profile][:password])
-    @account.save
-    @warning = 'Password changed successfully!'
   end
 end

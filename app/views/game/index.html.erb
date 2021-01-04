@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <td colspan="4" align="center">
-            <%= button_to 'Save game', 'save_btn', {class: 'game-action-button'}%>
+            <%= button_to 'Save game', 'save_btn', {class: 'game-action-button', :disabled => @is_lose}%>
           </td>
         </tr>
         <tr>
@@ -45,85 +45,75 @@
         <tr>
           <td>Health:</td>
           <td>
-            <progress id='health_progress' class='form-game-progress-stats' max="100" value=<%= @account.health %>></progress>
+            <progress id='health_progress' class='form-game-progress-stats' max="100" value=<%= @gui_health %>></progress>
             <div class="stats_val">
-              <%= form.label :health_value, value=@account.health %>
+              <%= form.label :health_value, value=@gui_health %>
             </div>
           </td>
           <td width="40px"></td>
           <td>
             <div align="center">
-              <%= button_to 'Go Job', 'go_job', {class: 'game-action-button', :disabled => @is_loose} %>
+              <%= button_to 'Go Job', 'go_job', {class: 'game-action-button', :disabled => @is_lose} %>
             </div>
           </td>
         </tr>
         <tr>
           <td>Tired:</td>
           <td>
-            <progress class='form-game-progress-stats' max="100" value="<%= @account.tired %>"></progress>
+            <progress class='form-game-progress-stats' max="100" value="<%= @gui_tired %>"></progress>
             <div class="stats_val">
-              <%= form.label :tired_value, value=@account.tired %>
+              <%= form.label :tired_value, value=@gui_tired %>
             </div>
           </td>
           <td width="40px"></td>
           <td>
             <div align="center">
-              <%= button_to 'Go behold', 'go_behold', {class: 'game-action-button', :disabled => @is_loose} %>
+              <%= button_to 'Go behold', 'go_behold', {class: 'game-action-button', :disabled => @is_lose} %>
             </div>
           </td>
         </tr>
         <tr>
           <td>Mana:</td>
           <td>
-            <progress class='form-game-progress-stats' max="100" value="<%= @account.mana %>"></progress>
+            <progress class='form-game-progress-stats' max="100" value="<%= @gui_mana %>"></progress>
             <div class="stats_val">
-              <%= form.label :mana_value, value=@account.mana %>
+              <%= form.label :mana_value, value=@gui_mana %>
             </div>
           </td>
           <td width="40px"></td>
           <td>
             <div align="center">
-              <%= button_to 'Watch series', 'watch_series', {class: 'game-action-button', :disabled => @is_loose} %>
+              <%= button_to 'Watch series', 'watch_series', {class: 'game-action-button', :disabled => @is_lose} %>
             </div>
           </td>
         </tr>
         <tr>
           <td>Fun:</td>
           <td>
-            <progress class='form-game-progress-stats' max="10" value="<%= @account.funny %>"></progress>
+            <progress class='form-game-progress-stats' max="20" value="<%= @gui_funny + 10 %>"></progress>
             <div class="stats_val">
-              <%= form.label :funny_value, value=@account.funny %>
+              <%= form.label :funny_value, value=@gui_funny %>
             </div>
           </td>
           <td width="40px"></td>
           <td>
             <div align="center">
-              <%= button_to 'Go bar', 'go_bar', {class: 'game-action-button', :disabled => @is_loose} %>
+              <%= button_to 'Go bar', 'go_bar', {class: 'game-action-button', :disabled => @is_lose} %>
             </div>
           </td>
         </tr>
         <tr>
           <td>Money:</td>
           <td>
-            <progress class='form-game-progress-stats' max="1000" value="<%= @account.money %>"></progress>
+            <progress class='form-game-progress-stats' max="1000" value="<%= @gui_money %>"></progress>
             <div class="stats_val">
-              <%= form.label :money_value, value=@account.money %>
+              <%= form.label :money_value, value=@gui_money %>
             </div>
           </td>
           <td width="40px"></td>
           <td>
             <div align="center">
-              <%= button_to 'Go drink', 'go_drink', {class: 'game-action-button', :disabled => @is_loose} %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td width="40px"></td>
-          <td>
-            <div align="center">
-              <%= button_to 'Go sleep', 'go_sleep', {class: 'game-action-button', :disabled => @is_loose} %>
+              <%= button_to 'Go drink', 'go_drink', {class: 'game-action-button', :disabled => @is_lose} %>
             </div>
           </td>
         </tr>
@@ -133,7 +123,17 @@
           <td width="40px"></td>
           <td>
             <div align="center">
-              <%= button_to 'Go sing', 'go_sing', {class: 'game-action-button', :disabled => @is_loose} %>
+              <%= button_to 'Go sleep', 'go_sleep', {class: 'game-action-button', :disabled => @is_lose} %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td width="40px"></td>
+          <td>
+            <div align="center">
+              <%= button_to 'Go sing', 'go_sing', {class: 'game-action-button', :disabled => @is_lose} %>
             </div>
           </td>
         </tr>
