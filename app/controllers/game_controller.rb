@@ -6,20 +6,24 @@ class GameController < ApplicationController
       render plain: 'Access error', status: :unauthorized
       return
     end
-
     account = account_get
     @gui_health = account.health
     @gui_mana = account.mana
     @gui_funny = account.funny
     @gui_money = account.money
     @gui_tired = account.tired
-
     check_lose
     @warning = session[:last_warn] || ''
   end
 
   def account_get
-    Account.find_by(id: session[:user_id])
+    account = Account.find_by(id: session[:user_id])
+    if account.nil?
+      account = Account.new
+      account.stats_reset
+      account.points = 0
+    end
+    account
   end
 
   def update_screen

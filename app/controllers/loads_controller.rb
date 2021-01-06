@@ -21,11 +21,15 @@ class LoadsController < ApplicationController
     saves_list&.each do |it|
       next unless it.name == selected_save_name
 
-      user = Account.find_by(id: session[:user_id])
-      user.load_from_saveslot(it)
-      user.save
+      user_load(it)
     end
     session[:last_warn] = ''
     redirect_to '/game'
+  end
+
+  def user_load(save_slot)
+    user = Account.find_by(id: session[:user_id])
+    user.load_from_saveslot(save_slot)
+    user.save
   end
 end
